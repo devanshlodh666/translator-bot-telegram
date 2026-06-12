@@ -2,7 +2,6 @@ require("dotenv").config();
 
 const TelegramBot = require("node-telegram-bot-api");
 const translate = require("./tanslate");
-// const franc = require("franc");
 const bot = new TelegramBot(
   process.env.BOT_TOKEN,
   {
@@ -15,8 +14,6 @@ console.log("Bot Started...");
 bot.on("message", async (msg) => {
   try {
     // const text = msg?.text;
-    // const lang = franc(text);
-    // if (lang === "eng") return;
      if (!msg.text.startsWith(".")) return;
   const text = msg.text.slice(1).trim();
     if (!text) return;
@@ -30,12 +27,6 @@ if (
   ) {
     return;
   }
-  
-
-    // await bot.sendMessage(
-    //   msg.chat.id,
-    //   `🌐 ${translated}`
-    // );
 
     await bot.sendMessage(
   msg.chat.id,  `${translated}`,
@@ -53,3 +44,10 @@ if (
 //     ${text}
 //  English:
 //     ${translated}`
+
+  
+
+    // await bot.sendMessage(
+    //   msg.chat.id,
+    //   `🌐 ${translated}`
+    // );

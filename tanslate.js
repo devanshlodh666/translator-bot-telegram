@@ -11,8 +11,15 @@ module.exports = async (text) => {
   return result;
 };
 
-
-
+const express = require("express");
+const PORT = process.env.PORT || 3000;
+const app = express();
+app.get("/", (req, res) => {
+  res.send("Telegram Bot Running 🚀");
+});
+app.listen(PORT, () => {
+  console.log(`Server running on ${PORT}`);
+});
 // const axios = require("axios");
 
 // async function translate(text) {
