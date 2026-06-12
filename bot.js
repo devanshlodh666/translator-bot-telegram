@@ -23,7 +23,7 @@ bot.on("message", async (msg) => {
     const translated = await translate(text);
 if (
     translated.trim().toLowerCase() ===
-    msg.text.trim().toLowerCase()
+    text.toLowerCase()
   ) {
     return;
   }
