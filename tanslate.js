@@ -17,6 +17,18 @@ const app = express();
 app.get("/", (req, res) => {
   res.send("Telegram Bot Running 🚀");
 });
+app.get("/health", (req, res) => {
+  res.status(200).send("OK");
+});
+const APP_URL = process.env.URL;
+setInterval(async () => {
+  try {
+    const response = await fetch(`${APP_URL}/health`);
+    console.log("Keep Alive:", response.status);
+  } catch (err) {
+    console.error(err.message);
+  }
+}, 5 * 60 * 1000); // 10 min
 app.listen(PORT, () => {
   console.log(`Server running on ${PORT}`);
 });
